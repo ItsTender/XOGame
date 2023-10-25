@@ -3,6 +3,10 @@ package com.example.xoblyad;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GoToXO();
+
     }
 
     private void GoToXO() {
@@ -20,6 +25,5 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.FrameLayoutMain, new XOFragment());
         ft.commit();
     }
-
 
 }

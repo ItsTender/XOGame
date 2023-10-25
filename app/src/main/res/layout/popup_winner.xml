@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="350dp"
+    android:layout_gravity="center"
+    android:background="@drawable/popupbackground">
+
+    <ImageView
+        android:id="@+id/IVWinner"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/tdusc"
+        app:layout_constraintBottom_toTopOf="@+id/tvWinnerTeam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWinnerTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IVWinner"
+        android:layout_centerHorizontal="true"
+        android:text="Congrats"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDesc"
+        app:layout_constraintEnd_toEndOf="@+id/IVWinner"
+        app:layout_constraintTop_toBottomOf="@+id/IVWinner" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvWinnerTeam"
+        android:layout_centerHorizontal="true"
+        android:text="Your Team Won XO"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWinnerTeam" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
