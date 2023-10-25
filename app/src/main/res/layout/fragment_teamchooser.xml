@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TeamchooserFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/FrameLayoutChooser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivO"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="355dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="226dp"
+            android:src="@drawable/letter_o"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivX"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivX"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="355dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="226dp"
+            android:src="@drawable/letter_x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivO"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="177dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="475dp"
+            android:gravity="center"
+            android:text="Click On The Team You Want To Start as"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

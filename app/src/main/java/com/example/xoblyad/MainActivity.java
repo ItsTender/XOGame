@@ -16,8 +16,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GoToXO();
+        GoToChooser();
 
+    }
+
+    private void GoToChooser() {
+        FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, new TeamchooserFragment());
+        ft.commit();
     }
 
     private void GoToXO() {

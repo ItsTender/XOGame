@@ -8,17 +8,16 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link XOWinnerFragment#newInstance} factory method to
+ * Use the {@link TeamchooserFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class XOWinnerFragment extends Fragment {
+public class TeamchooserFragment extends Fragment {
 
-    Button Play;
-    int Save;
+    ImageView O,X;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +28,7 @@ public class XOWinnerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public XOWinnerFragment() {
+    public TeamchooserFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +38,11 @@ public class XOWinnerFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment XOWinnerFragment.
+     * @return A new instance of fragment TeamchooserFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static XOWinnerFragment newInstance(String param1, String param2) {
-        XOWinnerFragment fragment = new XOWinnerFragment();
+    public static TeamchooserFragment newInstance(String param1, String param2) {
+        TeamchooserFragment fragment = new TeamchooserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,30 +63,38 @@ public class XOWinnerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_x_o_winner, container, false);
-
-        Bundle bundle= this.getArguments();
-
-        Save = bundle.getInt("Team1");
-
-        return view;
+        return inflater.inflate(R.layout.fragment_teamchooser, container, false);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Play= getView().findViewById(R.id.btnPlay2);
-        Play.setOnClickListener(new View.OnClickListener() {
+
+        O=getView().findViewById(R.id.ivO);
+        X=getView().findViewById(R.id.ivX);
+
+        O.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment gtn=new XOFragment();
-                Bundle bundle= new Bundle();
-                bundle.putInt("team",Save);
-                gtn.setArguments(bundle);
-                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, gtn);
-                ft.commit();
+                sendDataGoToXO(2);
+            }
+        });
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendDataGoToXO(1);
             }
         });
     }
+    private void sendDataGoToXO(int Team){
+
+        Fragment gtn=new XOFragment();
+        Bundle bundle= new Bundle();
+        bundle.putInt("team",Team);
+        gtn.setArguments(bundle);
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, gtn);
+        ft.commit();
+    }
+
 }

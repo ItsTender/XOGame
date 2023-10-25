@@ -19,7 +19,7 @@
             android:layout_marginEnd="49dp"
             android:layout_marginBottom="3dp"
             android:src="@drawable/temp"
-            app:layout_constraintBottom_toTopOf="@+id/btnReset"
+            app:layout_constraintBottom_toTopOf="@+id/btnResetBeginer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -154,11 +154,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btnReset"
-            android:layout_width="165dp"
+            android:id="@+id/btnResetBeginer"
+            android:layout_width="210dp"
             android:layout_height="56dp"
             android:layout_marginTop="626dp"
             android:layout_marginBottom="49dp"
+            android:text="Reset Begining Team"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="156dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="544dp"
+            android:layout_marginBottom="130dp"
             android:text="Reset Game"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

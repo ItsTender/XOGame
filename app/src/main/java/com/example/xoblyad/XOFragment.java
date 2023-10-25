@@ -1,8 +1,5 @@
 package com.example.xoblyad;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,10 +18,11 @@ import android.widget.Toast;
  */
 public class XOFragment extends Fragment {
 
-    Button Reset;
+    Button Reset, ResetBegin;
     TextView a1,a2,a3,a4,a5,a6,a7,a8,a9,turn;
+
     int [] xo= new int[10];
-    int status= 1; // 1=X , 2=O
+    int status, first; // 1=X , 2=O
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,14 +69,39 @@ public class XOFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_x_o, container, false);
+        View view= inflater.inflate(R.layout.fragment_x_o, container, false);
+
+        turn= view.findViewById(R.id.tvTurn);
+
+        Bundle bundle= this.getArguments();
+
+        first = bundle.getInt("team");
+        status = bundle.getInt("team");
+
+        if(status==1) turn.setText("Team X's Turn");
+        else turn.setText("Team O's Turn");
+
+        return view;
     }
 
 
     public void PopupWinner(){
-            FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.FrameLayoutMain, new XOWinnerFragment());
-            ft.commit();
+        Fragment gtn=new XOWinnerFragment();
+        Bundle bundle= new Bundle();
+        bundle.putInt("Team1",first);
+        gtn.setArguments(bundle);
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, gtn);
+        ft.commit();
+    }
+    public void Popup2Winner(){
+        Fragment gtn=new XO2Fragment();
+        Bundle bundle= new Bundle();
+        bundle.putInt("Team2",first);
+        gtn.setArguments(bundle);
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutMain, gtn);
+        ft.commit();
     }
 
     @Override
@@ -95,16 +117,22 @@ public class XOFragment extends Fragment {
         a7=getView().findViewById(R.id.tv7);
         a8=getView().findViewById(R.id.tv8);
         a9=getView().findViewById(R.id.tv9);
-        turn=getView().findViewById(R.id.tvTurn);
         Reset= getView().findViewById(R.id.btnReset);
-
-        if(status==1) turn.setText("Team X's Turn");
-        else turn.setText("Team O's Turn");
+        ResetBegin= getView().findViewById(R.id.btnResetBeginer);
+        turn=getView().findViewById(R.id.tvTurn);
 
         for(int i=0;i<10;i++)
             xo[i]=0;
 
 
+        ResetBegin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.FrameLayoutMain, new TeamchooserFragment());
+                ft.commit();
+            }
+        });
         Reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +147,7 @@ public class XOFragment extends Fragment {
                 a9.setText("");
                 for(int i=0;i<10;i++)
                     xo[i]=0;
+                status=first;
                 if(status==1) turn.setText("Team X's Turn");
                 else turn.setText("Team O's Turn");
             }
@@ -144,9 +173,9 @@ public class XOFragment extends Fragment {
                         if(xo[1] == xo[4] && xo[1] == xo[7]) PopupWinner();
                     }
                     if(xo[1]==2) {
-                        if (xo[1] == xo[2] && xo[1] == xo[3]) PopupWinner();
-                        if(xo[1] == xo[5] && xo[1] == xo[9]) PopupWinner();
-                        if(xo[1] == xo[4] && xo[1] == xo[7]) PopupWinner();
+                        if (xo[1] == xo[2] && xo[1] == xo[3]) Popup2Winner();
+                        if(xo[1] == xo[5] && xo[1] == xo[9]) Popup2Winner();
+                        if(xo[1] == xo[4] && xo[1] == xo[7]) Popup2Winner();
                     }
                 }
             }
@@ -170,8 +199,8 @@ public class XOFragment extends Fragment {
                         if(xo[2] == xo[5] && xo[2] == xo[8]) PopupWinner();
                     }
                     if(xo[2]==2) {
-                        if (xo[2] == xo[1] && xo[2] == xo[3]) PopupWinner();
-                        if(xo[2] == xo[5] && xo[2] == xo[8]) PopupWinner();
+                        if (xo[2] == xo[1] && xo[2] == xo[3]) Popup2Winner();
+                        if(xo[2] == xo[5] && xo[2] == xo[8]) Popup2Winner();
                     }
                 }
             }
@@ -196,9 +225,9 @@ public class XOFragment extends Fragment {
                         if(xo[3] == xo[5] && xo[3] == xo[7]) PopupWinner();
                     }
                     if(xo[3]==2) {
-                        if (xo[3] == xo[2] && xo[3] == xo[3]) PopupWinner();
-                        if(xo[3] == xo[6] && xo[3] == xo[9]) PopupWinner();
-                        if(xo[1] == xo[5] && xo[3] == xo[7]) PopupWinner();
+                        if (xo[3] == xo[2] && xo[3] == xo[3]) Popup2Winner();
+                        if(xo[3] == xo[6] && xo[3] == xo[9]) Popup2Winner();
+                        if(xo[1] == xo[5] && xo[3] == xo[7]) Popup2Winner();
                     }
                 }
             }
@@ -222,8 +251,8 @@ public class XOFragment extends Fragment {
                         if(xo[4] == xo[5] && xo[4] == xo[6]) PopupWinner();
                     }
                     if(xo[4]==2) {
-                        if (xo[4] == xo[1] && xo[4] == xo[7]) PopupWinner();
-                        if(xo[4] == xo[5] && xo[4] == xo[6]) PopupWinner();
+                        if (xo[4] == xo[1] && xo[4] == xo[7]) Popup2Winner();
+                        if(xo[4] == xo[5] && xo[4] == xo[6]) Popup2Winner();
                     }
                 }
             }
@@ -249,10 +278,10 @@ public class XOFragment extends Fragment {
                         if(xo[5] == xo[3] && xo[5] == xo[7]) PopupWinner();
                     }
                     if(xo[5]==2) {
-                        if (xo[5] == xo[2] && xo[5] == xo[8]) PopupWinner();
-                        if(xo[5] == xo[4] && xo[5] == xo[6]) PopupWinner();
-                        if (xo[5] == xo[1] && xo[5] == xo[9]) PopupWinner();
-                        if(xo[5] == xo[3] && xo[5] == xo[7]) PopupWinner();
+                        if (xo[5] == xo[2] && xo[5] == xo[8]) Popup2Winner();
+                        if(xo[5] == xo[4] && xo[5] == xo[6]) Popup2Winner();
+                        if (xo[5] == xo[1] && xo[5] == xo[9]) Popup2Winner();
+                        if(xo[5] == xo[3] && xo[5] == xo[7]) Popup2Winner();
                     }
                 }
             }
@@ -276,8 +305,8 @@ public class XOFragment extends Fragment {
                     if(xo[6] == xo[5] && xo[6] == xo[4]) PopupWinner();
                 }
                 if(xo[6]==2) {
-                    if(xo[4] == xo[1] && xo[4] == xo[7]) PopupWinner();
-                    if(xo[4] == xo[5] && xo[4] == xo[6]) PopupWinner();
+                    if(xo[4] == xo[1] && xo[4] == xo[7]) Popup2Winner();
+                    if(xo[4] == xo[5] && xo[4] == xo[6]) Popup2Winner();
                 }
             }
         }
@@ -302,9 +331,9 @@ public class XOFragment extends Fragment {
                     if(xo[7] == xo[8] && xo[7] == xo[9]) PopupWinner();
                 }
                 if(xo[7]==2) {
-                    if(xo[7] == xo[4] && xo[7] == xo[1]) PopupWinner();
-                    if(xo[7] == xo[5] && xo[7] == xo[3]) PopupWinner();
-                    if(xo[7] == xo[8] && xo[7] == xo[9]) PopupWinner();
+                    if(xo[7] == xo[4] && xo[7] == xo[1]) Popup2Winner();
+                    if(xo[7] == xo[5] && xo[7] == xo[3]) Popup2Winner();
+                    if(xo[7] == xo[8] && xo[7] == xo[9]) Popup2Winner();
                 }
             }
         }
@@ -328,8 +357,8 @@ public class XOFragment extends Fragment {
                         if(xo[8] == xo[7] && xo[8] == xo[9]) PopupWinner();
                     }
                     if(xo[8]==2) {
-                        if(xo[8] == xo[5] && xo[8] == xo[2]) PopupWinner();
-                        if(xo[8] == xo[7] && xo[8] == xo[9]) PopupWinner();
+                        if(xo[8] == xo[5] && xo[8] == xo[2]) Popup2Winner();
+                        if(xo[8] == xo[7] && xo[8] == xo[9]) Popup2Winner();
                     }
                 }
             }
@@ -354,9 +383,9 @@ public class XOFragment extends Fragment {
                         if(xo[9] == xo[5] && xo[1] == xo[9]) PopupWinner();
                     }
                     if(xo[9]==2) {
-                        if(xo[9] == xo[7] && xo[9] == xo[8]) PopupWinner();
-                        if(xo[9] == xo[6] && xo[9] == xo[3]) PopupWinner();
-                        if(xo[9] == xo[5] && xo[1] == xo[9]) PopupWinner();
+                        if(xo[9] == xo[7] && xo[9] == xo[8]) Popup2Winner();
+                        if(xo[9] == xo[6] && xo[9] == xo[3]) Popup2Winner();
+                        if(xo[9] == xo[5] && xo[1] == xo[9]) Popup2Winner();
                     }
                 }
             }

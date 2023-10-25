@@ -12,10 +12,10 @@ import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link XOWinnerFragment#newInstance} factory method to
+ * Use the {@link XO2Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class XOWinnerFragment extends Fragment {
+public class XO2Fragment extends Fragment {
 
     Button Play;
     int Save;
@@ -29,7 +29,7 @@ public class XOWinnerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public XOWinnerFragment() {
+    public XO2Fragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +39,11 @@ public class XOWinnerFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment XOWinnerFragment.
+     * @return A new instance of fragment XO2Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static XOWinnerFragment newInstance(String param1, String param2) {
-        XOWinnerFragment fragment = new XOWinnerFragment();
+    public static XO2Fragment newInstance(String param1, String param2) {
+        XO2Fragment fragment = new XO2Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,11 +64,12 @@ public class XOWinnerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_x_o_winner, container, false);
+        View view = inflater.inflate(R.layout.fragment_x_o2, container, false);
+
 
         Bundle bundle= this.getArguments();
 
-        Save = bundle.getInt("Team1");
+        Save = bundle.getInt("Team2");
 
         return view;
     }
