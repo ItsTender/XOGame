@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.color.utilities.Score;
+import com.google.firebase.firestore.auth.User;
+
 import java.net.URI;
 
 /**
@@ -25,9 +28,11 @@ import java.net.URI;
  */
 public class XOFragment extends Fragment {
 
+    String User1,User2;
+    int Score1,Score2;
     ImageView iv1,iv2,iv3,iv4,iv5,iv6,iv7,iv8,iv9;
     Button Reset, ResetBegin;
-    TextView turn;
+    TextView turn, tvuser1,tvuser2,tvscore1,tvscore2;
 
     int [] xo= new int[10];
     int status=1,first=1; // 1=X , 2=O
@@ -81,6 +86,11 @@ public class XOFragment extends Fragment {
 
         Bundle bundle= this.getArguments();
 
+        User1=bundle.getString("team1");
+        User2=bundle.getString("team2");
+        Score1=bundle.getInt("score1");
+        Score2=bundle.getInt("score2");
+
         return view;
     }
 
@@ -88,7 +98,12 @@ public class XOFragment extends Fragment {
     public void PopupWinner(){
         Fragment gtn=new XOWinnerFragment();
         Bundle bundle= new Bundle();
-        bundle.putInt("Team1",first);
+
+        bundle.putString("team1",User1);
+        bundle.putString("team2",User2);
+        bundle.putInt("score1",Score1 +1);
+        bundle.putInt("score2",Score2);
+
         gtn.setArguments(bundle);
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, gtn);
@@ -97,7 +112,12 @@ public class XOFragment extends Fragment {
     public void Popup2Winner(){
         Fragment gtn=new XO2Fragment();
         Bundle bundle= new Bundle();
-        bundle.putInt("Team2",first);
+
+        bundle.putString("team1",User1);
+        bundle.putString("team2",User2);
+        bundle.putInt("score1",Score1);
+        bundle.putInt("score2",Score2 +1);
+
         gtn.setArguments(bundle);
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, gtn);
@@ -122,6 +142,15 @@ public class XOFragment extends Fragment {
         iv8=getView().findViewById(R.id.IVa8);
         iv9=getView().findViewById(R.id.IVa9);
         turn= getView().findViewById(R.id.tvTurn);
+        tvuser1= getView().findViewById(R.id.tvUser1);
+        tvuser2= getView().findViewById(R.id.tvUser2);
+        tvscore1 =getView().findViewById(R.id.tvScore1);
+        tvscore2 =getView().findViewById(R.id.tvScore2);
+
+        tvuser1.setText(User1);
+        tvuser2.setText(User2);
+        tvscore1.setText(String.valueOf(Score1));
+        tvscore2.setText(String.valueOf(Score2));
 
         turn.setText("Team X's Turn");
 

@@ -75,7 +75,7 @@ public class ChooseUsersFragment extends Fragment {
         super.onStart();
 
         user1=getView().findViewById(R.id.etTeamX);
-        user2=getView().findViewById(R.id.etTeamX);
+        user2=getView().findViewById(R.id.etTeamO);
         Play=getView().findViewById(R.id.btnStartGame);
         Play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,17 +87,21 @@ public class ChooseUsersFragment extends Fragment {
                     Toast.makeText(getActivity(), "Some Field Are Missing!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                players=new Players(X,O);
-                sendDataGoToXO();
+                sendDataGoToXO(X,O);
             }
         });
     }
 
-    private void sendDataGoToXO(){
+    private void sendDataGoToXO(String Xplayer,String Oplayer){
 
         Fragment gtn=new XOFragment();
         Bundle bundle= new Bundle();
-        bundle.putInt("team",1);
+
+        bundle.putString("team1",Xplayer);
+        bundle.putString("team2",Oplayer);
+        bundle.putInt("score1",0);
+        bundle.putInt("score2",0);
+
         gtn.setArguments(bundle);
         FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutMain, gtn);

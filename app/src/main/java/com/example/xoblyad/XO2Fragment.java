@@ -18,7 +18,9 @@ import android.widget.Button;
 public class XO2Fragment extends Fragment {
 
     Button Play;
-    int Save;
+
+    String User1,User2;
+    int Score1,Score2;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,7 +71,11 @@ public class XO2Fragment extends Fragment {
 
         Bundle bundle= this.getArguments();
 
-        Save = bundle.getInt("Team2");
+        User1=bundle.getString("team1");
+        User2=bundle.getString("team2");
+        Score1=bundle.getInt("score1");
+        Score2=bundle.getInt("score2");
+
 
         return view;
     }
@@ -83,7 +89,12 @@ public class XO2Fragment extends Fragment {
             public void onClick(View view) {
                 Fragment gtn=new XOFragment();
                 Bundle bundle= new Bundle();
-                bundle.putInt("team",Save);
+
+                bundle.putString("team1",User1);
+                bundle.putString("team2",User2);
+                bundle.putInt("score1",Score1);
+                bundle.putInt("score2",Score2);
+
                 gtn.setArguments(bundle);
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.FrameLayoutMain, gtn);
