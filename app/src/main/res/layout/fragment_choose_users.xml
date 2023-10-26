@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChooseUsersFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="237dp"
+            android:layout_marginEnd="229dp"
+            android:layout_marginBottom="22dp"
+            android:src="@drawable/letter_o"
+            app:layout_constraintBottom_toTopOf="@+id/etTeamO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="166dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="237dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="22dp"
+            android:src="@drawable/letter_x"
+            app:layout_constraintBottom_toTopOf="@+id/etTeamX"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="323dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="82dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="730dp"
+            android:gravity="center"
+            android:text="Enter Team Usernames"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etTeamX"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="427dp"
+            android:ems="10"
+            android:hint="Team X Name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etTeamO"
+            app:layout_constraintTop_toBottomOf="@+id/iv2" />
+
+        <EditText
+            android:id="@+id/etTeamO"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="49dp"
+            android:layout_marginBottom="427dp"
+            android:ems="10"
+            android:hint="Team O Name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/etTeamX"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv1" />
+
+        <Button
+            android:id="@+id/btnStartGame"
+            android:layout_width="222dp"
+            android:layout_height="81dp"
+            android:layout_marginTop="580dp"
+            android:layout_marginBottom="49dp"
+            android:backgroundTint="@color/black"
+            android:text="Start Game"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

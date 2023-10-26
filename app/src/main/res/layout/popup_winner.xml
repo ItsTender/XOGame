@@ -12,7 +12,6 @@
         android:layout_width="150dp"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/tdusc"
         app:layout_constraintBottom_toTopOf="@+id/tvWinnerTeam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

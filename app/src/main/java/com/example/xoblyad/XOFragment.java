@@ -30,7 +30,7 @@ public class XOFragment extends Fragment {
     TextView turn;
 
     int [] xo= new int[10];
-    int status, first; // 1=X , 2=O
+    int status=1,first=1; // 1=X , 2=O
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -79,15 +79,7 @@ public class XOFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_x_o, container, false);
 
-        turn= view.findViewById(R.id.tvTurn);
-
         Bundle bundle= this.getArguments();
-
-        first = bundle.getInt("team");
-        status = bundle.getInt("team");
-
-        if(status==1) turn.setText("Team X's Turn");
-        else turn.setText("Team O's Turn");
 
         return view;
     }
@@ -129,6 +121,9 @@ public class XOFragment extends Fragment {
         iv7=getView().findViewById(R.id.IVa7);
         iv8=getView().findViewById(R.id.IVa8);
         iv9=getView().findViewById(R.id.IVa9);
+        turn= getView().findViewById(R.id.tvTurn);
+
+        turn.setText("Team X's Turn");
 
         for(int i=0;i<10;i++)
             xo[i]=0;
@@ -137,7 +132,7 @@ public class XOFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.FrameLayoutMain, new TeamchooserFragment());
+                ft.replace(R.id.FrameLayoutMain, new ChooseUsersFragment());
                 ft.commit();
             }
         });

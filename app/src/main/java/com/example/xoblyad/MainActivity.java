@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void GoToChooser() {
         FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutMain, new TeamchooserFragment());
+        ft.replace(R.id.FrameLayoutMain, new ChooseUsersFragment());
         ft.commit();
     }
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "364062956028",
+    "project_id": "xogame-59306",
+    "storage_bucket": "xogame-59306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364062956028:android:73bcc261c7c9179caaba79",
+        "android_client_info": {
+          "package_name": "com.example.xoblyad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtYcljjmyRUMqONsb-qhWYWzz8ZEQ1tYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
